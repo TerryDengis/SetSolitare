@@ -47,13 +47,13 @@ struct SetGame {
         self.dealDuction = dealDeduction
         
         for shape in 1...3 {
-            for color in 1...3 {
+            for color in 1...3 { //easy
                 // TODO: - for testing spot 1
-                //for shading in 1...3 {
-                    //for number in 1...3 {
-                        deck.append(Card (shape: shape, color: color, shading: 1, number: 2))
-                    //}
-                //}
+                for shading in 1...3 { // medium
+                    for number in 1...3 { // hard
+                        deck.append(Card (shape: shape, color: color, shading: shading, number: number))
+                    }
+                }
             }
         }
         deck.shuffle()
@@ -78,7 +78,7 @@ struct SetGame {
     
     mutating func deal () {
         // TODO: - for testing spot 2
-        for _ in 1...6/*12*/ {
+        for _ in 1...9/*12*/ {
             cardsDealt.append(deck.removeFirst())
         }
     }

@@ -39,9 +39,7 @@ struct PopUpView: View {
                     .multilineTextAlignment(.center)
                 Spacer()
                 Button (buttonText) {
-                    withAnimation (.easeInOut(duration: 1.0)) {
-                        self.action ()
-                    }
+                    self.action ()
                 }
                 .font(.system(.title, design: .rounded))
                 Spacer()
@@ -60,7 +58,7 @@ struct PopUpView_Previews: PreviewProvider {
         let vm = SetSolitareVM()
         vm.showPopUp = true
         
-        return PopUpView(gameVM: vm, title: "Preview", message: "This is a preview", buttonText: "OK", action: { print ("action")})
+        return PopUpView(gameVM: vm, title: "Preview", message: "This is a preview", buttonText: "OK", action: { })
         
     }
 }

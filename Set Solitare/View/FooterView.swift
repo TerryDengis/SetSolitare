@@ -24,7 +24,6 @@ struct FooterView: View {
             Spacer()
             Button ("Deal") {
                 withAnimation (.easeInOut(duration: 1.0)) {
-                    self.gameVM.showPopUp = false
                     self.gameVM.dealThree()
                 }
             }

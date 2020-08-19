@@ -87,6 +87,7 @@ class SetSolitareVM: ObservableObject {
         setModel = SetGame(matchPoints: matchPoints, hintDeduction: hintDeduction, mismatchDeduction: mismatchDeduction, dealDeduction: dealDeduction)
         deal()
         startingUp = false
+        showPopUp = false
     }
     
     func deal() {
@@ -94,6 +95,7 @@ class SetSolitareVM: ObservableObject {
     }
     
     func dealThree() {
+        showPopUp = false
         setModel.dealThree()
     }
     
@@ -106,7 +108,7 @@ class SetSolitareVM: ObservableObject {
     }
     
     func matchedSets () -> Int {
-    setModel.matchedCards.count / 3
+        setModel.matchedCards.count / 3
     }
     
     func resetStatus () {
