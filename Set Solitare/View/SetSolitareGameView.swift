@@ -16,11 +16,16 @@ struct SetSolitareGameView: View {
             ZStack {
                 VStack {
                     // MARK: - DEALT CARDS
-                    if gameVM.isGameOver() {
-                        Spacer ()
-                        Text("GAME OVER")
-                            .font(.largeTitle)
-                        Spacer ()
+                    if !gameVM.startingUp && gameVM.isGameOver()  {
+                        
+                        VStack {
+                            Spacer ()
+                            PopUpView (gameVM: gameVM, title: "Gameover", message: "Congratulations you won!", buttonText: "New Game", action: {
+                                self.gameVM.newGame()
+                            })
+                            Spacer ()
+                        }
+                        .transition(.offset(randomOffscreenPosition()))
                     } else {
                         DealtCardsView (gameVM: gameVM)
                     }
@@ -46,7 +51,12 @@ struct SetSolitareGameView: View {
                 // MARK: - POPUP
                 if gameVM.showPopUp  {
                     withAnimation(.easeInOut(duration: 1.0)) {
-                        PopUpView(gameVM: gameVM)
+                        PopUpView (gameVM: gameVM, title: "No Sets Available", message: "Deal more cards", buttonText: "OK", action: {
+                            self.gameVM.showPopUp = false
+                            self.gameVM.dealThree()
+                            
+                        }
+                        )
                     }
                 }
             } // ZStack

@@ -48,11 +48,12 @@ struct SetGame {
         
         for shape in 1...3 {
             for color in 1...3 {
-                for shading in 1...3 {
-                    for number in 1...3 {
-                        deck.append(Card (shape: shape, color: color, shading: shading, number: number))
-                    }
-                }
+                // TODO: - for testing spot 1
+                //for shading in 1...3 {
+                    //for number in 1...3 {
+                        deck.append(Card (shape: shape, color: color, shading: 1, number: 2))
+                    //}
+                //}
             }
         }
         deck.shuffle()
@@ -76,7 +77,8 @@ struct SetGame {
     }
     
     mutating func deal () {
-        for _ in 1...12 {
+        // TODO: - for testing spot 2
+        for _ in 1...6/*12*/ {
             cardsDealt.append(deck.removeFirst())
         }
     }
@@ -212,7 +214,7 @@ struct SetGame {
             }
         }
         
-        // for testing
+        // TODO: - for testing spot 3
         //matchStatus = .matched
         
         selection.forEach {index in

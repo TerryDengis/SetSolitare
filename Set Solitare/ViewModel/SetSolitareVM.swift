@@ -12,6 +12,7 @@ class SetSolitareVM: ObservableObject {
     @Published private var setModel : SetGame
     
     var showPopUp : Bool = false
+    var startingUp : Bool = true
     
     // MARK: - Score constants
     let matchPoints = 100
@@ -85,6 +86,7 @@ class SetSolitareVM: ObservableObject {
     func newGame() {
         setModel = SetGame(matchPoints: matchPoints, hintDeduction: hintDeduction, mismatchDeduction: mismatchDeduction, dealDeduction: dealDeduction)
         deal()
+        startingUp = false
     }
     
     func deal() {

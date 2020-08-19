@@ -10,6 +10,10 @@ import SwiftUI
 
 struct PopUpView: View {
     @ObservedObject var gameVM: SetSolitareVM
+    var title: String
+    var message: String
+    var buttonText: String
+    var action: () -> Void
     
     var body: some View {
         
@@ -18,23 +22,25 @@ struct PopUpView: View {
                 .edgesIgnoringSafeArea(.all)
             
             VStack (spacing:0) {
-                Text("No Sets Available")
+                Text(title)
                     .font(.system(.title, design: .rounded))
                     .fontWeight(.heavy)
                     .padding()
                     .frame(minWidth: 0, maxWidth: .infinity)
                     .background(Color("HintColor"))
                     .foregroundColor(.white)
-                    
+                    .multilineTextAlignment(.center)
+                
                 Spacer()
-                Text ("Deal more cards")
+
+                Text (message)
                     .font(.system(.title, design: .rounded))
                     .foregroundColor(.black)
+                    .multilineTextAlignment(.center)
                 Spacer()
-                Button ("OK") {
+                Button (buttonText) {
                     withAnimation (.easeInOut(duration: 1.0)) {
-                        self.gameVM.showPopUp = false
-                        self.gameVM.dealThree()
+                        self.action ()
                     }
                 }
                 .font(.system(.title, design: .rounded))
@@ -44,12 +50,7 @@ struct PopUpView: View {
         .frame(minWidth: 270, idealWidth: 270, maxWidth: 280, minHeight: 210, idealHeight: 210, maxHeight: 220, alignment: .center)
         .background(Color.white)
         .cornerRadius(20)
-        //.shadow(color: Color("ColorTransparentBlack"), radius: 6, x: 0, y: 8)
-        //.opacity($animatingModal.wrappedValue ? 1 : 0)
-        //.animation(Animation.spring(response: 0.6, dampingFraction: 1.0, blendDuration: 1.0))
-        .onAppear(perform: {
-            //self.animatingModal = true
-        })
+        .shadow(color: Color("ColorTransparentBlack"), radius: 6, x: 0, y: 8)
     }
 }
 
@@ -59,7 +60,7 @@ struct PopUpView_Previews: PreviewProvider {
         let vm = SetSolitareVM()
         vm.showPopUp = true
         
-        return PopUpView(gameVM: vm)
+        return PopUpView(gameVM: vm, title: "Preview", message: "This is a preview", buttonText: "OK", action: { print ("action")})
         
     }
 }
