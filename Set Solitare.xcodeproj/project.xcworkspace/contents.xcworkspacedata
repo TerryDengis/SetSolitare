@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:../GridLayout.swift">
+   </FileRef>
+   <FileRef
+      location = "group:/Users/terrydengis/Documents/SourceCode/Courses/iOS/SwiftUI/CS193p Spring 2020/Set Solitare/Set Solitare/View/GridLayout.swift">
+   </FileRef>
+   <FileRef
+      location = "group:/Users/terrydengis/Documents/SourceCode/Courses/iOS/SwiftUI/CS193p Spring 2020/Set Solitare/Set Solitare/View/GridView.swift">
+   </FileRef>
+   <FileRef
+      location = "self:">
+   </FileRef>
+</Workspace>
