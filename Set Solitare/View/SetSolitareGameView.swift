@@ -16,7 +16,7 @@ struct SetSolitareGameView: View {
 
             ZStack {
                 // MARK: - BACKGROUND
-                LinearGradient(gradient: Gradient(colors: [Color("ColorBackground1"), Color("ColorBackground2")]), startPoint: .center, endPoint: .top)
+                LinearGradient(gradient: Gradient(colors: [Color("BackgroundColor1"), Color("BackgroundColor2")]), startPoint: .center, endPoint: .top)
                     .edgesIgnoringSafeArea(.all)
                 VStack {
                     // MARK: - DEALT CARDS

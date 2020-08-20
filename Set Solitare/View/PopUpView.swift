@@ -47,7 +47,7 @@ struct PopUpView: View {
         .frame(minWidth: 270, idealWidth: 270, maxWidth: 280, minHeight: 210, idealHeight: 210, maxHeight: 220, alignment: .center)
         .background(Color.white)
         .cornerRadius(20)
-        .shadow(color: Color("ColorTransparentBlack"), radius: 6, x: 0, y: 8)
+        .shadow(color: Color("ShadowColor"), radius: 6, x: 0, y: 8)
     }
 }
 
