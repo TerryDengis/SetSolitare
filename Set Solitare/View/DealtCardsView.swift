@@ -12,7 +12,7 @@ struct DealtCardsView: View {
     @ObservedObject var gameVM: SetSolitareVM
     
     var body: some View {
-        GridView(gameVM.cardsDealt) { card in
+        GridView(gameVM.viewableCards) { card in
             CardView (card: card)
             .onTapGesture {
                 withAnimation(.spring(response: 0.55, dampingFraction: 0.15, blendDuration: 0.0)) {

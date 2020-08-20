@@ -19,7 +19,7 @@ struct SetGame {
     private var mismatchDeduction: Int
     private var dealDuction: Int
     
-    enum cardStatus : Int {
+    enum CardStatus : Int {
         case none = 0
         case selected = 1
         case matched = 2
@@ -33,7 +33,7 @@ struct SetGame {
         var color: Int
         var shading: Int
         var number: Int
-        var cardStatus: cardStatus = .none
+        var cardStatus: CardStatus = .none
     }
     
     init (matchPoints: Int=0, hintDeduction: Int=0, mismatchDeduction: Int=0, dealDeduction: Int=0) {
@@ -129,25 +129,25 @@ struct SetGame {
     // Find all cards chosen by the user
     private var selectedIndices: [Int] {
         get {
-            cardsDealt.indices.filter {cardsDealt[$0].cardStatus == cardStatus.selected}
+            cardsDealt.indices.filter {cardsDealt[$0].cardStatus == CardStatus.selected}
         }
     }
     
     private var touchedIndices: [Int] {
         get {
-            cardsDealt.indices.filter {cardsDealt[$0].cardStatus != cardStatus.none && cardsDealt[$0].cardStatus != cardStatus.hint}
+            cardsDealt.indices.filter {cardsDealt[$0].cardStatus != CardStatus.none && cardsDealt[$0].cardStatus != CardStatus.hint}
         }
     }
     
     private var selectedMismatchesIndicies: [Int] {
         get {
-            cardsDealt.indices.filter {cardsDealt[$0].cardStatus == cardStatus.mismatched}
+            cardsDealt.indices.filter {cardsDealt[$0].cardStatus == CardStatus.mismatched}
         }
     }
     
     private var selectedMatchedIndicies: [Int] {
         get {
-            cardsDealt.indices.filter {cardsDealt[$0].cardStatus == cardStatus.matched}
+            cardsDealt.indices.filter {cardsDealt[$0].cardStatus == CardStatus.matched}
         }
     }
     
@@ -189,7 +189,7 @@ struct SetGame {
         let test3 = compareAttributes(firstCard.number, secondCard.number, thirdCard.number)
         let test4 = compareAttributes(firstCard.shape, secondCard.shape, thirdCard.shape)
         
-        var matchStatus: cardStatus = .none
+        var matchStatus: CardStatus = .none
         
         if test1 && test2 && test3 && test4 {
             

@@ -17,22 +17,8 @@ private let shadeOpaque: Double = 0.4
 private let shadeSolid: Double = 1.0
 private let shadeEmpty: Double = 0.0
 
-
-// MARK: - Card Attributes
-let shapeFeature_rectangle = 1
-let shapeFeature_circle = 2
-let shapeFeature_capsule = 3
-
-let shadingFeature_solid = 1
-let shadingFeature_opaque = 2
-let shadingFeature_empty = 3
-
-let colorFeature_red = 1
-let colorFeature_green = 2
-let colorFeature_blue = 3
-
 struct CardView: View {
-    var card: SetGame.Card
+    var card: SetSolitareVM.ViewableCard
 
     var body: some View {
         GeometryReader { geometry in
@@ -67,11 +53,11 @@ struct CardView: View {
 
     private var shapeColor: Color {
         get {
-            if card.color == colorFeature_blue {
+            if card.color == .blue {
                 return Color.blue
-            } else if card.color == colorFeature_red {
+            } else if card.color == .red {
                 return Color.red
-            } else { //colorFeature_green
+            } else { //.green
                 return Color.green
             }
         }
@@ -79,11 +65,11 @@ struct CardView: View {
 
     private var shapeOpacity: Double {
         get {
-            if card.shading == shadingFeature_solid {
+            if card.shading == .solid {
                 return shadeSolid
-            } else if card.shading == shadingFeature_opaque {
+            } else if card.shading == .opaque {
                 return shadeOpaque
-            } else { //shadingFeature_empty
+            } else { //.empty
                 return shadeEmpty
             }
         }
@@ -92,7 +78,7 @@ struct CardView: View {
     @ViewBuilder
     private func drawShape () -> some View {
 
-        if card.shape == shapeFeature_rectangle {
+        if card.shape == .rectangle {
             ZStack {
                 Rectangle ()
                     .stroke(lineWidth: shapeLineWidth)
@@ -103,7 +89,7 @@ struct CardView: View {
             .aspectRatio(1.0, contentMode: .fit)
             .foregroundColor(shapeColor)
 
-        } else if card.shape == shapeFeature_capsule {
+        } else if card.shape == .capsule {
             ZStack {
                 Capsule ()
                     .stroke(lineWidth: shapeLineWidth)
@@ -115,7 +101,7 @@ struct CardView: View {
             .aspectRatio(7/3, contentMode: .fit)
             .foregroundColor(shapeColor)
 
-        } else { //shapeFeature_circle
+        } else { //.circle
             ZStack {
                 Circle ()
                     .stroke(lineWidth: shapeLineWidth)
@@ -133,9 +119,8 @@ struct CardView: View {
                 .stroke(lineWidth: borderWidth)
             RoundedRectangle(cornerRadius: cardCornerRadius)
                 .fill(Color("CardColor"))
-                //.opacity(cardOpacity)
             VStack {
-                ForEach (0..<card.number) { _ in
+                ForEach (0..<card.numberOfShapes) { _ in
                     self.drawShape()
                 }
             }
@@ -149,7 +134,7 @@ struct CardView: View {
 
 struct CardView_Previews: PreviewProvider {
     static var previews: some View {
-        let card = SetGame.Card(id: UUID(), shape: 3, color: 1, shading: 2, number: 2, cardStatus: .mismatched)
+        let card = SetSolitareVM.ViewableCard(id: UUID(), numberOfShapes: 3, shape: .capsule, color: .blue, shading: .opaque, cardStatus: .matched)
         return CardView(card: card)
     }
 }

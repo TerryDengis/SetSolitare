@@ -58,6 +58,5 @@ struct PopUpView_Previews: PreviewProvider {
         vm.showPopUp = true
         
         return PopUpView(gameVM: vm, title: "Preview", message: "This is a preview", buttonText: "OK", action: { })
-        
     }
 }
