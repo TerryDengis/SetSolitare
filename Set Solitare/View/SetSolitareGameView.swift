@@ -13,7 +13,11 @@ struct SetSolitareGameView: View {
     
     var body: some View {
         NavigationView {
+
             ZStack {
+                // MARK: - BACKGROUND
+                LinearGradient(gradient: Gradient(colors: [Color("ColorBackground1"), Color("ColorBackground2")]), startPoint: .center, endPoint: .top)
+                    .edgesIgnoringSafeArea(.all)
                 VStack {
                     // MARK: - DEALT CARDS
                     DealtCardsView (gameVM: gameVM)
@@ -28,7 +32,7 @@ struct SetSolitareGameView: View {
                     }
                 }
                 // MARK: - NAVIGATION BAR
-                .navigationBarTitle("Set Solitare")
+                    .navigationBarTitle ("Set Solitare", displayMode: .automatic)
                 .navigationBarItems(leading: Text("Score: \(gameVM.gameScore())"), trailing: Button("New Game") {
                     withAnimation(.easeInOut(duration: 2.0)){
                         self.gameVM.newGame()

@@ -9,14 +9,14 @@
 import SwiftUI
 
 // MARK: - Drawing Constants
-private let cardCornerRadius: CGFloat = 10.0
-private let cardLineWidth: CGFloat = 3.0
+private let cardCornerRadius: CGFloat = 20.0
+private let cardLineWidth: CGFloat = 4.0
 private let cardSelectedLineWidth: CGFloat = 9.0
 private let shapeLineWidth: CGFloat = 3.0
-private let shadeOpaque: Double = 0.25
+private let shadeOpaque: Double = 0.4
 private let shadeSolid: Double = 1.0
 private let shadeEmpty: Double = 0.0
-private let cardOpacity: Double = 0.2
+
 
 // MARK: - Card Attributes
 let shapeFeature_rectangle = 1
@@ -53,15 +53,15 @@ struct CardView: View {
     private var borderColor: Color {
         get {
             if card.cardStatus == .selected {
-                return Color("SelectedColor")//Color.init(hex: "382933")
+                return Color("SelectedColor")
             } else if card.cardStatus == .matched {
-                return Color("MatchedColor")//Color.init(hex: "799351")
+                return Color("MatchedColor")
             } else if card.cardStatus == .mismatched {
-                return Color("MismatchedColor")//Color.init(hex: "d54062")
+                return Color("MismatchedColor")
             } else if card.cardStatus == .hint {
-                return Color("HintColor")//Color.init(hex: "ebdc87")
+                return Color("HintColor")
             }
-            return Color("RegularColor")//Color.gray
+            return Color(.darkGray)
         }
     }
 
@@ -132,8 +132,8 @@ struct CardView: View {
             RoundedRectangle(cornerRadius: cardCornerRadius)
                 .stroke(lineWidth: borderWidth)
             RoundedRectangle(cornerRadius: cardCornerRadius)
-                .fill(Color("RegularColor"))
-                .opacity(cardOpacity)
+                .fill(Color("CardColor"))
+                //.opacity(cardOpacity)
             VStack {
                 ForEach (0..<card.number) { _ in
                     self.drawShape()
@@ -144,13 +144,12 @@ struct CardView: View {
         .foregroundColor(borderColor)
         .padding(5)
         .aspectRatio(2/3, contentMode: .fit)
-
     }
 }
 
 struct CardView_Previews: PreviewProvider {
     static var previews: some View {
-        let card = SetGame.Card(id: UUID(), shape: 3, color: 3, shading: 2, number: 3, cardStatus: .mismatched)
+        let card = SetGame.Card(id: UUID(), shape: 3, color: 1, shading: 2, number: 2, cardStatus: .mismatched)
         return CardView(card: card)
     }
 }

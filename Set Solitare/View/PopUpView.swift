@@ -19,7 +19,6 @@ struct PopUpView: View {
         
         ZStack {
             Color(.lightGray)
-                .edgesIgnoringSafeArea(.all)
             
             VStack (spacing:0) {
                 Text(title)
