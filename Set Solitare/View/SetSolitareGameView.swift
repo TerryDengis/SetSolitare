@@ -33,14 +33,14 @@ struct SetSolitareGameView: View {
                 }
                 // MARK: - NAVIGATION BAR
                     .navigationBarTitle ("Set Solitare", displayMode: .automatic)
-                .navigationBarItems(leading: Text("Score: \(gameVM.gameScore())"), trailing: Button("New Game") {
+                .navigationBarItems(leading: Text("Score: \(gameVM.gameScore)"), trailing: Button("New Game") {
                     withAnimation(.easeInOut(duration: 2.0)){
                         self.gameVM.newGame()
                     }
                 })
                 
                 // MARK: - GAME OVER
-                if gameVM.isGameOver() && !gameVM.startingUp {
+                if gameVM.isGameOver && !gameVM.startingUp {
                     PopUpView (gameVM: gameVM, title: "Game Over", message: "Congratulations you won!", buttonText: "New Game", action: {
                         withAnimation(.easeInOut(duration: 2.0)){
                             self.gameVM.newGame()
@@ -50,7 +50,7 @@ struct SetSolitareGameView: View {
 
                 // MARK: - POPUP
                 if gameVM.showPopUp {
-                    if gameVM.isDeckEmpty() {
+                    if gameVM.isDeckEmpty {
                         PopUpView (gameVM: gameVM, title: "Game Over", message: "No more sets available!", buttonText: "New Game", action: {
                             withAnimation(.easeInOut(duration: 2.0)) {
                                 self.gameVM.newGame()

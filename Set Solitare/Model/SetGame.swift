@@ -78,7 +78,7 @@ struct SetGame {
     
     mutating func deal () {
         // TODO: - for testing spot 2
-        for _ in 1...9/*12*/ {
+        for _ in 1...12 {
             cardsDealt.append(deck.removeFirst())
         }
     }

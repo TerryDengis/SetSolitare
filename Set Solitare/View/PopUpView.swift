@@ -57,6 +57,6 @@ struct PopUpView_Previews: PreviewProvider {
         let vm = SetSolitareVM()
         vm.showPopUp = true
         
-        return PopUpView(gameVM: vm, title: "Preview", message: "This is a preview", buttonText: "OK", action: { })
+        return PopUpView(gameVM: vm, title: "Preview", message: "Congratulations you won!", buttonText: "OK", action: { })
     }
 }

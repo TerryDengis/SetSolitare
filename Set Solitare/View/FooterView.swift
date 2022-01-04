@@ -14,21 +14,21 @@ struct FooterView: View {
     var body: some View {
         HStack {
             Text("Matched Sets: ")
-            Text("\(gameVM.matchedSets())")
+            Text("\(gameVM.matchedSets)")
             Spacer()
             Button ("Hint") {
                 if !self.gameVM.showHint() {
                     self.gameVM.showPopUp = true
                 }
             }
-            .disabled(gameVM.isGameOver ())
+            .disabled(gameVM.isGameOver)
         
             Button ("Deal") {
                 withAnimation (.easeInOut(duration: 1.0)) {
                     self.gameVM.dealThree()
                 }
             }
-            .disabled(gameVM.isDeckEmpty())
+            .disabled(gameVM.isDeckEmpty)
         }
         .padding()
     }

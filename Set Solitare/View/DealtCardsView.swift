@@ -19,6 +19,7 @@ struct DealtCardsView: View {
                     self.gameVM.choose(card: card)
                 }
             }
+        
             .gesture(
                 DragGesture(minimumDistance: 10)
                     .onEnded { _ in

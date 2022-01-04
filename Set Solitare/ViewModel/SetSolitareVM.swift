@@ -51,6 +51,31 @@ class SetSolitareVM: ObservableObject {
         var cardStatus: SetGame.CardStatus
     }
     
+    var gameScore: Int {
+        get {
+            setModel.gameScore
+        }
+    }
+    
+    var isDeckEmpty: Bool {
+        get {
+            setModel.deck.isEmpty
+        }
+    }
+    
+    var isGameOver: Bool {
+        get {
+            setModel.cardsDealt.isEmpty
+        }
+    }
+    
+    var matchedSets: Int {
+        get {
+            setModel.matchedCards.count / 3
+        }
+    }
+    
+
     private func updateViewFromModel () {
         let model = setModel.cardsDealt
 
@@ -123,18 +148,6 @@ class SetSolitareVM: ObservableObject {
         updateViewFromModel()
     }
     
-    func isDeckEmpty () -> Bool {
-        setModel.deck.isEmpty
-    }
-    
-    func isGameOver () -> Bool {
-        setModel.cardsDealt.isEmpty
-    }
-    
-    func matchedSets () -> Int {
-        setModel.matchedCards.count / 3
-    }
-    
     func resetStatus () {
         setModel.clearCardStatus()
         updateViewFromModel()
@@ -148,9 +161,5 @@ class SetSolitareVM: ObservableObject {
             return true
         }
         return false
-    }
-    
-    func gameScore () -> Int {
-        setModel.gameScore
     }
 }
